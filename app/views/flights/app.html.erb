@@ -1,16 +1,18 @@
 <div id="main"></div>
 
-<h1> Virgin Airlines</h1>
-
 
 <script id="createPlaneTemplate" type="text/template">
+  <h1> Virgin Airlines</h1>
 
-  <input id="plane_name" type="text" placeholder="name"/>
-  <input id="plane_row" type="text" placeholder="no. of row"/>
-  <input id="plane_col" type="text" placeholder="no. of col"/>
+  <button id="new_plane">Create Plane</button>
+  <p>
+    <div id="plane_form" style="display: none">
+      <input id="plane_name" type="text" placeholder="name"/>
+      <input id="plane_row" type="text" placeholder="no. of row"/>
+      <input id="plane_col" type="text" placeholder="no. of col"/>
 
-  <button>Cancel</button>
-  <button>Save</button>
-
-
+      <button>Cancel</button>
+      <button>Save</button>
+    </div>
+  </p>
 </script>
