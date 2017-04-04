@@ -9,12 +9,14 @@
     <p>
       <div id="plane_form" style="display: none" class="ui large form">
         <input id="plane_name" type="text" placeholder="name"/>
-        <input id="plane_row" type="text" placeholder="no. of row"/>
-        <input id="plane_col" type="text" placeholder="no. of col"/>
+        <input id="plane_row" type="number" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
+        <input id="plane_col" type="number" min="20" max="50" placeholder="no. of cols - input value from 20 to 50"/>
 
-        <button class="ui large button">Cancel</button>
-        <button class="ui large button">Save</button>
+        <button id="cancel" class="ui large button">Cancel</button>
+        <button id="save_plane" class="ui large button">Save</button>
       </div>
-    </p>
-  </div>
+    </div>
+  </p>
+
+  <div id="seats"></div>
 </script>
