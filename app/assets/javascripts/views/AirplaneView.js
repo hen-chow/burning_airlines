@@ -32,11 +32,12 @@ App.AirplaneView = Backbone.View.extend({
 
     for(var r = 0; r < rows; r++) {
       var tr = $("<tr>");
-      $("<th>" + (r+1) + "</th>").appendTo(tr);
+      var chr = String.fromCharCode(65 + r);
+      $("<th>" + chr + "</th>").appendTo(tr);
       for (var c = 0; c < cols; c++) {
-        $("<td></td>").appendTo(tr);
+        $("<td>" + parseInt(c + 1) + "</td>").appendTo(tr);
         }
-      // $("<th>" + (c+1) + "</th>").appendTo(table);  
+      // $("<th>" + (c+1) + "</th>").appendTo(table);
       tr.appendTo(table);
     }
 
