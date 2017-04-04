@@ -2,11 +2,9 @@ var App = App || {}
 
 App.AirplaneView = Backbone.View.extend({
   el: "#main",
-
   events: {
-    "click": "show"
+    "click #new_plane": "show",
   },
-
   render: function () {
     this.$el.html($("#createPlaneTemplate").html());
     // var view = new App.AirplanesListView({collection: this.collection});
@@ -15,7 +13,7 @@ App.AirplaneView = Backbone.View.extend({
   },
 
   show: function(){
-    $("#plane_form").css("display", "inline");
+    $("#plane_form").css("display", "inline-block");
   }
 
 });

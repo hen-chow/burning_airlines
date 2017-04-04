@@ -1,6 +1,6 @@
 class AirplanesController < ApplicationController
   before_action :authenticate_user, only: [:create]
-   
+
   def index
     render json: Airplane.all
   end

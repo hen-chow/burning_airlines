@@ -1,0 +1,27 @@
+<div id="main"></div>
+
+<!-- main template for backbone to receive inputs for create flight-->
+<script id="createFlightTemplate" type="text/template">
+  <div class="ui middle aligned center aligned grid">
+    <h1> Virgin Airlines</h1>
+
+    <button id="new_flight" class="ui large button">Create Flight</button>
+    <p>
+      <div id="flight_form" style="display: none" class="ui large form">
+        <input id="flight_number" type="text" placeholder="flight number"/>
+        <input id="date" type="text" placeholder="date"/>
+        <input id="to" type="text" placeholder="to"/>
+        <input id="from" type="text" placeholder="from"/>
+        <select name="airplane_id", class="ui selection dropdown">
+          {{ _.each(models, function(airplane){ }}
+            <option value="{{= airplane.get('name') }}"></option>
+          {{ }) }}
+        </select>
+
+        <button class="ui large button">Cancel</button>
+        <button class="ui large button">Save</button>
+      </div>
+    </p>
+  </div>
+
+</script>
