@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resources :airplanes, only: [:create, :index]
   resources :reservations, only: [:create, :index]
   resources :users, only: [:create, :index]
+
+  get "login", to: "sessions#new", as: "login"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy", as: "logout"
+
 end
