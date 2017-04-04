@@ -36,9 +36,9 @@ App.AirplaneView = Backbone.View.extend({
       var tr = $("<tr>");
       $("<th>" + (r+1) + "</th>").appendTo(tr);
       for (var c = 0; c < cols; c++) {
-        // $("<th>" + (c+1) + "</th>").appendTo(table);
         $("<td></td>").appendTo(tr);
         }
+      // $("<th>" + (c+1) + "</th>").appendTo(table);  
       tr.appendTo(table);
     }
 
