@@ -1,5 +1,8 @@
 class FlightsController < ApplicationController
 
+  def app
+  end
+
   def index
     render json: Flight.all
   end
