@@ -1,7 +1,7 @@
 class FlightsController < ApplicationController
 
   def index
-    render json: = Flight.all
+    render json: Flight.all
   end
 
   def create
