@@ -2,17 +2,19 @@
 
 
 <script id="createPlaneTemplate" type="text/template">
-  <h1> Virgin Airlines</h1>
+  <div class="ui middle aligned center aligned grid">
+    <h1> Virgin Airlines</h1>
 
-  <button id="new_plane">Create Plane</button>
-  <p>
-    <div id="plane_form" style="display: none">
-      <input id="plane_name" type="text" placeholder="name"/>
-      <input id="plane_row" type="text" placeholder="no. of row"/>
-      <input id="plane_col" type="text" placeholder="no. of col"/>
+    <button id="new_plane" class="ui large button">Create Plane</button>
+    <p>
+      <div id="plane_form" style="display: none" class="ui large form">
+        <input id="plane_name" type="text" placeholder="name"/>
+        <input id="plane_row" type="text" placeholder="no. of row"/>
+        <input id="plane_col" type="text" placeholder="no. of col"/>
 
-      <button>Cancel</button>
-      <button>Save</button>
+        <button class="ui large button">Cancel</button>
+        <button class="ui large button">Save</button>
+      </div>
     </div>
   </p>
 </script>

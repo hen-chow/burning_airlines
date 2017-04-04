@@ -1,0 +1,19 @@
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui header">
+      <div class="content">Log into your account
+      </div>
+    </h2>
+    <%= form_tag login_path, method: :post, class: "ui large form" do %>
+      <p>
+        <input type="text" name="email" placeholder="Email address" />
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="Password" />
+      </p>
+      <p>
+        <input type="submit" value="Log In" class="ui large button" />
+      </p>
+    <% end %>
+  </div>
+</div>

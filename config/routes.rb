@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :flights, only: [:create, :index]
   resources :airplanes, only: [:create, :index]
   resources :reservations, only: [:create, :index]
-  resources :users, only: [:create, :index]
+  resources :users, only: [:new, :create]
 
   get "login", to: "sessions#new", as: "login"
   post "login", to: "sessions#create"
