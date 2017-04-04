@@ -2,13 +2,11 @@ var App = App || {}
 
 App.AirplaneView = Backbone.View.extend({
   el: "#main",
-
   events: {
     "click #new_plane": "show",
     "click #save_plane": "save",
     "click #cancel": "cancel"
   },
-
   render: function () {
     this.$el.html($("#createPlaneTemplate").html());
     // var view = new App.AirplanesListView({collection: this.collection});

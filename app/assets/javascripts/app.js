@@ -3,13 +3,14 @@ _.templateSettings = {
     evaluate : /\{\{(.+?)\}\}/g
   };
 
+App.router = new App.Router();
+App.airplanes = new App.Airplanes();
+App.flights = new App.Flights();
 
 $(document).ready(function(){
 
-  App.router = new App.Router();
-  App.airplanes = new App.Airplanes();
-  
-  App.airplanes.fetch().done(function(data){
+  App.airplanes.fetch().done();
+  App.flights.fetch().done(function(data){
     Backbone.history.start();
   })
 
