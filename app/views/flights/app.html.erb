@@ -1,4 +1,5 @@
 <div id="main"></div>
+<div id="results"></div>
 
 <!-- main template for backbone to receive inputs for search flight-->
 <script id="searchFlightTemplate" type="text/template">
@@ -19,13 +20,19 @@
   </div>
 </script>
 
-<div id="results"></div>
+
 <!-- main template for backbone to print out search results -->
 <script id="searchResultsTemplate" type="text/template">
-  <div class="ui middle aligned center aligned grid">
+  <div class="ui container">
     {{ _.each(results, function(flight){ }}
-    <h4>{{= flight.get("date") }}<a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a> {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
-    <button id="{{= flight.get("id")}}">Select</button>
+    <ul>
+      <li>{{= flight.get("date") }}</li>
+      <li><a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a></li>
+      <li>{{= flight.get("departure") }} > {{= flight.get("arrival") }}</li>
+    </ul>
+    <p>
+      <button id="{{= flight.get("id")}}" class="ui large button">Select</button>
+    </p>
     {{ }); }}
   </div>
 </script>
