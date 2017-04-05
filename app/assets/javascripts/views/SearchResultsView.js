@@ -3,7 +3,8 @@ var App = App || {}
 App.SearchResultsView = Backbone.View.extend({
   el: "#results",
   events: {
-    "click .flightID": "doReserve"
+    "click .flightID": "doReserve",
+    "click button": "showFlight"
   },
   render: function () {
     App.searchResults = this.collection.models.filter(function(flight){
@@ -18,7 +19,14 @@ App.SearchResultsView = Backbone.View.extend({
   },
   doReserve: function(e){
     var id = $(e.currentTarget).attr("href");
-    App.router.navigate("flight/" + id, {trigger: true});
+    App.router.navigate("flight/" + id + "/", {trigger: true});
+
+  },
+
+  showFlight: function(e){
+    App.id = $(e.currentTarget).attr("id");
+
+    App.router.navigate("flight/" + App.id + "/", {trigger: true});
 
   }
 

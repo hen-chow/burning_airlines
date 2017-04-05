@@ -24,7 +24,18 @@
 <script id="searchResultsTemplate" type="text/template">
   <div class="ui middle aligned center aligned grid">
     {{ _.each(results, function(flight){ }}
-    <h4>{{= flight.get("date") }}<a class="flightID" href="{{= flight.get("id")}}">{{= flight.get("number") }}</a> {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
+    <h4>{{= flight.get("date") }}<a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a> {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
+    <button id="{{= flight.get("id")}}">Select</button>
+    {{ }); }}
+  </div>
+</script>
+
+
+<!-- main template for backbone to print out reservations -->
+<script id="reservationsTemplate" type="text/template">
+  <div class="ui middle aligned center aligned grid">
+    {{ _.each(results, function(flight){ }}
+    <h4>{{= flight.get("date") }} {{= flight.get("number") }} {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
     {{ }); }}
   </div>
 </script>
