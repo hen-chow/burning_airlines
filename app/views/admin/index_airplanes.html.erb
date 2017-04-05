@@ -1,49 +1,24 @@
-<div id="mainAirplanes"></div>
+<div class="ui main text container pushable">
 
-<!-- main template for backbone to receive inputs for create plane-->
-<script id="createPlaneTemplate" type="text/template">
-  <div class="ui middle aligned center aligned grid">
-    <h1> Virgin Airlines</h1>
+  <%= form_tag create_airplanes_path, method: "post", class: "ui form" do %>
 
-    <button id="new_plane" class="ui large button">Create Plane</button>
     <p>
-      <div id="plane_form" style="display: none" class="ui large form">
-        <input id="plane_name" type="text" placeholder="name"/>
-        <input id="plane_row" type="number" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
-        <input id="plane_col" type="number" min="20" max="50" placeholder="no. of cols - input value from 20 to 50"/>
-
-        <button id="cancel" class="ui large button">Cancel</button>
-        <button id="save_plane" class="ui large button">Save</button>
-      </div>
+      <label>Name</label>
+      <input type="text" name="name" placeholder="name"/>
     </p>
-  </div>
-
-  <div id="seats"></div>
-</script>
-
-
-<!-- main template for backbone to receive inputs for create flight-->
-<script id="createFlightTemplate" type="text/template">
-  <div class="ui middle aligned center aligned grid">
-    <h1> Virgin Airlines</h1>
-
-    <button id="new_flight" class="ui large button">Create Flight</button>
     <p>
-      <div id="flight_form" style="display: none" class="ui large form">
-        <input id="flight_number" type="text" placeholder="flight number"/>
-        <input id="date" type="text" placeholder="date"/>
-        <input id="arrival" type="text" placeholder="arrival"/>
-        <input id="departure" type="text" placeholder="departure"/>
-        <select name="airplane_id", class="ui selection dropdown">
-          {{ _.each(models, function(airplane){ }}
-            <option value="{{= airplane.get('name') }}"></option>
-          {{ }) }}
-        </select>
-
-        <button class="ui large button">Cancel</button>
-        <button class="ui large button">Save</button>
-      </div>
+      <label>Rows</label>
+      <input type="number" name="rows" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
     </p>
-  </div>
+    <p>
+      <label>Columns</label>
+      <input type="number" name="columns" min="20" max="50" placeholder="no. of cols - input value from 20 to 50"/>
+    </p>
+    <p>
+      <input type="submit" value="Create" class="ui button"/>
+    </p>
 
-</script>
+
+  <% end %>
+
+</div>
