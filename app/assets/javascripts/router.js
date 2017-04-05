@@ -3,7 +3,8 @@ var App = App || {}
 App.Router = Backbone.Router.extend({
   routes: {
     "": "index",
-    "search/:departure/:arrival/": "searchResults"
+    "search/:departure/:arrival/": "searchResults",
+    "flight/:id": "reservation"
     // "flights": "newFlight"
     // "/admin/airplanes": "createAirplanes"
   },
@@ -23,5 +24,9 @@ App.Router = Backbone.Router.extend({
   searchResults: function () {
     var view = new App.SearchResultsView({departure: departure, arrival: arrival, collection: App.flights});
     view.render();
+  },
+
+  reservation: function(){
+    alert("make a reservation")
   }
 })
