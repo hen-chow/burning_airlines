@@ -1,7 +1,7 @@
 var App = App || {}
 
 App.AirplaneView = Backbone.View.extend({
-  el: "#main",
+  el: "#mainAirplanes",
   events: {
     "click #new_plane": "show",
     "click #save_plane": "save",
