@@ -50,15 +50,14 @@ App.ReservationView = Backbone.View.extend({
       border: "solid 1px black",
       padding: "10px"
     });
-
-
   },
 
   createSeatArray: function(row, column){
     var rowArray = Array(row).fill("");
     App.seatArray = _.map(rowArray, function(num){
-      return num = Array(5).fill("")
+      return num = Array(column).fill("")
     });
+    return App.seatArray
   },
 
   createReservation: function(user, x, y){ //update seatArray with this function, create reservation in backend
@@ -74,7 +73,5 @@ App.ReservationView = Backbone.View.extend({
     var seats = App.seatArray;
     seats[x][y] = user; // updating the seatArray
     return seats;
-
   }
-
 });

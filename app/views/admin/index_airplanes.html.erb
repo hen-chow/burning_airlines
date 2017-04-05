@@ -8,7 +8,7 @@
     </p>
     <p>
       <label>Rows</label>
-      <input type="number" name="row" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
+      <input id="seat_row" type="number" name="row" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
     </p>
     <p>
       <label>Columns</label>
@@ -21,6 +21,21 @@
 
   <% end %>
 
+  <!-- <script>
+    $(document).ready(function(){
+      $("#seat_row").keydown(function(){
+        $(this).data("old", $(this).val());
+      });
+      $("#seat_row").keyup(function(){
+        if (parseInt($(this).val()) <= 10 && parseInt($(this).val()) >= 5) {
+        ;
+        } else {
+        $(this).val($(this).data("old"));
+        }
+      });
+    })
+
+  </script> -->
 
   <!-- $("#seats").html("");
   var name = $("#plane_name").val();
