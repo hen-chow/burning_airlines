@@ -1,6 +1,6 @@
 <div id="main"></div>
 
-<!-- main template for backbone to receive inputs for create flight-->
+<!-- main template for backbone to receive inputs for search flight-->
 <script id="searchFlightTemplate" type="text/template">
   <div class="ui middle aligned center aligned grid">
     <h1> Virgin Airlines</h1>
@@ -8,8 +8,8 @@
     <button id="search_flight" class="ui large button">Search Flights</button>
     <p>
       <div id="search_form" style="display: none" class="ui large form">
-        <input id="departure" type="text" placeholder="from"/>
-        <input id="arrival" type="text" placeholder="to"/>
+        <input id="departure" type="text" placeholder="from" value="Sydney" />
+        <input id="arrival" type="text" placeholder="to" value="Melbourne"/>
 
         <button id="cancel_search" class="ui large button">Cancel</button>
         <button id="save_search" class="ui large button">Save</button>
@@ -17,5 +17,14 @@
     </p>
     <div id="search_results"></div>
   </div>
+</script>
 
+<div id="results"></div>
+<!-- main template for backbone to print out search results -->
+<script id="searchResultsTemplate" type="text/template">
+  <div class="ui middle aligned center aligned grid">
+    {{ _.each(results, function(flight){ }}
+    <h4>{{= flight.get("date") }}<a href="#/{{= flight.get("id")}}">{{= flight.get("number") }}</a> {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
+    {{ }); }}
+  </div>
 </script>
