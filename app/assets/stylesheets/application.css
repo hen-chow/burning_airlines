@@ -24,4 +24,10 @@
    margin: 3em;
  }
 
- 
+ #results {
+   margin: 30px;
+ }
+
+.ui.button {
+  margin: 10px;
+}

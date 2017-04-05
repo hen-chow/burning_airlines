@@ -25,7 +25,7 @@ App.SearchResultsView = Backbone.View.extend({
 
   showFlight: function(e){
     App.id = $(e.currentTarget).attr("id");
-
+    
     App.router.navigate("flight/" + App.id + "/", {trigger: true});
 
   }
