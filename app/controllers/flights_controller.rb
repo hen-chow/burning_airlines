@@ -8,7 +8,7 @@ class FlightsController < ApplicationController
   end
 
   def create
-    flight = Flight.create(number: params[:number], date: params[:date], arrival: params[:arrival], departure: params[:departure], plane_id: params[:plane_id])
+    flight = Flight.create(number: params[:number], date: params[:date], arrival: params[:arrival], departure: params[:departure], airplane_id: params[:airplane_id])
 
     render json: flight
   end
