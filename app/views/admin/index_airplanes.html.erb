@@ -8,11 +8,11 @@
     </p>
     <p>
       <label>Rows</label>
-      <input type="number" name="rows" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
+      <input type="number" name="row" min="5" max="10" placeholder="no. of rows - input value from 5 to 10"/>
     </p>
     <p>
       <label>Columns</label>
-      <input type="number" name="columns" min="20" max="50" placeholder="no. of cols - input value from 20 to 50"/>
+      <input type="number" name="column" min="20" max="50" placeholder="no. of cols - input value from 20 to 50"/>
     </p>
     <p>
       <input type="submit" value="Create" class="ui button"/>
@@ -20,5 +20,45 @@
 
 
   <% end %>
+
+
+  <!-- $("#seats").html("");
+  var name = $("#plane_name").val();
+  var rows = $("#plane_row").val();
+  var cols = $("#plane_col").val();
+  var seats = $("#seats");
+  var table = $("<table>");
+
+  seats.append(table);
+  table.append("<caption>" + name + " - " + "rows: " + rows + ", cols: " + cols + "</caption>"); -->
+
+  <!-- <% @airplanes.each do |p| %>
+    <table>
+      <caption><%= p.name %></caption>
+      <tr><%= p.row %></tr>
+      <td><%= p.column %></td>
+  <% end %>
+
+    </table> -->
+
+  <!-- for(var r = 0; r < rows; r++) {
+    var tr = $("<tr>");
+    var chr = String.fromCharCode(65 + r);
+    $("<th>" + chr + "</th>").appendTo(tr);
+    for (var c = 0; c < cols; c++) {
+      $("<td>" + parseInt(c + 1) + "</td>").appendTo(tr);
+      }
+    // $("<th>" + (c+1) + "</th>").appendTo(table);
+    tr.appendTo(table);
+  }
+
+  $("caption").css("text-align", "left");
+  $("table").css("margin", "100px auto");
+  $("td").css({
+    border: "solid 1px black",
+    padding: "10px"
+  }); -->
+
+
 
 </div>
