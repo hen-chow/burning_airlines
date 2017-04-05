@@ -27,7 +27,7 @@ App.Router = Backbone.Router.extend({
   },
 
   reservation: function(){
-    var view = new App.ReservationView({collection: App.flights, id: App.id});
+    var view = new App.ReservationView({id: App.id, collection: App.flights});
     view.render();
   }
 })
