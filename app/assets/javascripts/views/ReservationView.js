@@ -6,9 +6,12 @@ App.ReservationView = Backbone.View.extend({
     // "click .flightID": "doReserve"
   // },
   render: function () {
+    // $("#result").html("");
     App.reservations = this.collection.models.filter(function(flight){
       return flight.get("id").toString() === App.id
     });
+
+    console.log(App.reservations);
 
     var template = _.template($("#reservationsTemplate").html());
     // this.$el
