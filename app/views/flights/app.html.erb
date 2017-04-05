@@ -33,9 +33,10 @@
 
 <!-- main template for backbone to print out reservations -->
 <script id="reservationsTemplate" type="text/template">
-  <div class="ui middle aligned center aligned grid">
+  <div>
     {{ _.each(results, function(flight){ }}
     <h4>{{= flight.get("date") }} {{= flight.get("number") }} {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
     {{ }); }}
+    <div id="seatPlan"></div>
   </div>
 </script>
