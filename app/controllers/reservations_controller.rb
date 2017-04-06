@@ -7,11 +7,11 @@ class ReservationsController < ApplicationController
   def create
     if @current_user
       user_id = @current_user.id
-      @reservation = Reservation.new(flight_id: params[:flight_id], row: params[:row], column: params[:column], user_id: user_id)
-      if @reservation.save
-        render json: @reservation
+      new_reservation = Reservation.new(flight_id: params[:flight_id], row: params[:row], column: params[:column], user_id: user_id)
+      if new_reservation.save
+        render json: new_reservation
       else
-        flash[:error] = "Fatal error."
+        flash[:error] = "Sorry there was a problem with your seat reservation"
       end
     else
       flash[:error] = "Please sign in"
