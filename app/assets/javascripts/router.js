@@ -4,9 +4,8 @@ App.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     "search/:departure/:arrival/": "searchResults",
-    "flight/:id/": "reservation"
-    // "confirmation/:column/:row/": "confirmation"
-
+    "flight/:id/": "reservation",
+    "confirmation/:column/:row/": "confirmation"
   },
 
   index: function(){
@@ -32,11 +31,11 @@ App.Router = Backbone.Router.extend({
       id: App.id
     });
     view.render();
-  // },
-  // 
-  // confirmation: function(column, row){
-  //   var view = new App.ConfirmationView({results: App.flightDetail, column: column, row: row});
-  //   view.render();
+  },
+
+  confirmation: function(column, row){
+    var view = new App.ConfirmationView({model: App.flightDetail, column: column, row: row});
+    view.render();
   }
 
 })

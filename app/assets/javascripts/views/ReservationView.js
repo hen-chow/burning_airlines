@@ -4,7 +4,7 @@ App.ReservationView = Backbone.View.extend({
   el: "#main",
 
   events: {
-    "click td": "createReservation" //"createConfirmation"
+    "click td": "createConfirmation" //"createConfirmation"
   },
 
   render: function () {
@@ -22,17 +22,17 @@ App.ReservationView = Backbone.View.extend({
 
   },
 
-  createReservation: function(e){ // create confirmation window
-    var flight_id = App.id;
+  createConfirmation: function(e){ // create confirmation window
+    // var flight_id = App.id;
     var column = $(e.currentTarget).index() - 1;
     var row = $(e.currentTarget).parent().index(); //String.fromCharCode(65 + ())
 
-    // App.router.navigate("confirmation/" + column + "/" + row + "/", {trigger: true});
+    App.router.navigate("confirmation/" + column + "/" + row + "/", {trigger: true});
 
     // var new_reservation = new App.Reservation ({flight_id: flight_id, row: row, column: column })
     // new_reservation.save();
 
-    this.collection.reservations.create({flight_id: flight_id, row: row, column: column});
+    // this.collection.reservations.create({flight_id: flight_id, row: row, column: column});
 
     // App.Reservations.add( r );
 

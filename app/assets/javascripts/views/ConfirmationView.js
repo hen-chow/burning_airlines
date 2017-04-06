@@ -1,7 +1,7 @@
 var App = App || {}
 
 App.ConfirmationView = Backbone.View.extend({
-  el: "#confirmation_container",
+  el: "#confirmation",
 
   events: {
     "click #confirmation": "createReservation"
@@ -11,7 +11,8 @@ App.ConfirmationView = Backbone.View.extend({
 
     // $("#seatPlan").html("");
     var template = _.template($("#confirmationTemplate").html());
-    this.$el.html(template({results: App.flightDetail}));
+    debugger
+    this.$el.html(template({results: App.flightDetail, column: column, row: row}));
   },
 
   createReservation: function(e){ // create reservation in backend

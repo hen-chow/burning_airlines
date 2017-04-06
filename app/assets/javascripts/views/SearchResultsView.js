@@ -12,7 +12,6 @@ App.SearchResultsView = Backbone.View.extend({
     var searchResults = this.collection.models.filter(function(flight){
       return flight.get('departure') === departure.value && flight.get('arrival') === arrival.value;
     });
-
     var template = _.template($("#searchResultsTemplate").html());
     this.$el.html(template({results: searchResults}));
   },
