@@ -2,23 +2,27 @@ var App = App || {}
 
 App.ReservationView = Backbone.View.extend({
   el: "#main",
+  initialize: function(options){
+    this.listenTo(App.reservations, "change sync", this.render);
+  },
   // events: {
     // "click .flightID": "doReserve"
   // },
   render: function () {
     $("#results").html("");
-    App.reservations = this.collection.models.filter(function(flight){
+    App.flightDetail = this.collection.models.filter(function(flight){
       return flight.get("id").toString() === App.id
     });
 
-    console.log(App.reservations);
+    console.log(App.flightDetail);
 
     var template = _.template($("#reservationsTemplate").html());
     // this.$el
-    this.$el.html(template({results: App.reservations}));
+    this.$el.html(template({results: App.flightDetail}));
 
 
-    var airplaneID = App.reservations[0].attributes.airplane_id
+    var airplaneID = App.flightDetail[0].attributes.airplane_id
+    debugger
     var name = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.name
     var rows = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.row
     var cols = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.column

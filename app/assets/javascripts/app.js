@@ -6,12 +6,13 @@ _.templateSettings = {
 App.router = new App.Router();
 App.airplanes = new App.Airplanes();
 App.flights = new App.Flights();
-// App.reservations = new App.Reservations();
+App.reservations = new App.Reservations();
 
 $(document).ready(function(){
 
   App.airplanes.fetch().done();
-  App.flights.fetch().done(function(data){
+  App.flights.fetch().done();
+  App.reservations.fetch().done(function(data){
     Backbone.history.start();
   })
 
