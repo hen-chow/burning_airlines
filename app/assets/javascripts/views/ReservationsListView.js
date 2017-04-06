@@ -7,7 +7,6 @@ App.ReservationsListView = Backbone.View.extend({
   },
 
   render: function () {
-    debugger;
     $("#results").html("");
     App.flightDetail = this.collection.flights.models.filter(function(flight){
       return flight.get("id").toString() === App.id

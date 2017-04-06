@@ -29,6 +29,6 @@ reservation_2 = Reservation.create(user_id: admin.id, flight_id: flight_2.id, co
 reservation_3 = Reservation.create(user_id: admin.id, flight_id: flight_3.id, column: 4, row: 5)
 reservation_4 = Reservation.create(user_id: admin.id, flight_id: flight_1.id, column: 6, row: 5)
 reservation_5 = Reservation.create(user_id: admin.id, flight_id: flight_1.id, column: 2, row: 7)
-reservation_6 = Reservation.create(user_id: admin.id, flight_id: flight_1.id, column: 4, row: 9)
+reservation_6 = Reservation.create(user_id: admin.id, flight_id: flight_1.id, column: 4, row: 8)
 
 puts "Seed file uploaded"
