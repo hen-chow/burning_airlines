@@ -22,7 +22,6 @@ App.ReservationView = Backbone.View.extend({
 
 
     var airplaneID = App.flightDetail[0].attributes.airplane_id
-    debugger
     var name = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.name
     var rows = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.row
     var cols = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.column
