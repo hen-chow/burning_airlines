@@ -3,7 +3,7 @@ var App = App || {}
 App.ReservationView = Backbone.View.extend({
   el: "#main",
   initialize: function(options){
-    this.listenTo(this.collection, "change sync", this.render);
+    this.listenTo(options.collection, "change sync", this.render);
   },
 
   events: {
@@ -85,11 +85,14 @@ App.ReservationView = Backbone.View.extend({
 
   createReservation: function(e){ //update seatArray with this function, create reservation in backend
     var flight_id = App.id;
+    var column = $(e.currentTarget).index() - 1;
     var row = $(e.currentTarget).parent().index();
 
-    var new_reservation = new App.Reservation ({flight_id: flight_id, row: row, column: column })
-    new_reservation.save();
+    // var new_reservation = new App.Reservation ({flight_id: flight_id, row: row, column: column })
+    // new_reservation.save();
 
+    this.collection.reservations.create({flight_id: flight_id, row: row, column: column});
+    this.render();
     // var seats = this.seatArray;
     // seats[x][y] = user; // updating the seatArray
     // return seats;
