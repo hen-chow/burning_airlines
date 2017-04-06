@@ -5,16 +5,18 @@ App.ReservationView = Backbone.View.extend({
   initialize: function(options){
     this.listenTo(App.reservations, "change sync", this.render);
   },
-  // events: {
-    // "click .flightID": "doReserve"
-  // },
+
+  events: {
+    "click td": "createReservation"
+  },
+
   render: function () {
     $("#results").html("");
     App.flightDetail = this.collection.flights.models.filter(function(flight){
       return flight.get("id").toString() === App.id
     });
 
-    console.log(App.flightDetail);
+    // console.log(App.flightDetail);
 
     var template = _.template($("#reservationsTemplate").html());
     // this.$el
@@ -31,10 +33,20 @@ App.ReservationView = Backbone.View.extend({
     this.createSeatArray(rows, cols);
 
     var res = this.collection.reservations.models.filter(function(reservation){
-      return reservation.get("flight_id").toString() === App.id
+      return reservation.get("flight_id").toString() === App.id;
     });
 
-    console.log(res);
+    var seat = [];
+
+    _.each(res, function(num) {
+      seat.push("row: " + num.get("row"));
+      seat.push("col: " + num.get("column"));
+
+      return seat;
+
+    })
+
+    console.log(seat);
 
 
     seatPlan.append(table);
@@ -63,29 +75,24 @@ App.ReservationView = Backbone.View.extend({
       padding: "10px"
     });
 
-    
-
   },
 
   createSeatArray: function(row, column){
     var rowArray = Array(row).fill("");
-    App.seatArray = _.map(rowArray, function(num){
+    var seatArray = _.map(rowArray, function(num){
       return num = Array(column).fill("")
     });
-    return App.seatArray
+    return seatArray
   },
 
   createReservation: function(user, x, y){ //update seatArray with this function, create reservation in backend
-    var user_id; //= this.$el.find("input").val();
-    var flight_id;
+    var flight_id = App.id;
 
     var reservation = new App.Reservation({ user_id: user_id, flight_id: flight_id })
     reservation.save();
     // this.collection.create({ user_id: user_id, flight_id: flight_id });
 
-    // this.$el.find("input").val("").focus();
-
-    var seats = App.seatArray;
+    var seats = this.seatArray;
     seats[x][y] = user; // updating the seatArray
     return seats;
   }

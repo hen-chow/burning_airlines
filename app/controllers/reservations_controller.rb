@@ -5,11 +5,16 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(clean_params)
-    if @reservation.save
-      render json: @reservation
+    if @current_user
+      @reservation = Reservation.new(clean_params)
+      if @reservation.save
+        render json: @reservation
+      else
+        flash[:error] = "Fatal error."
+      end
     else
-      flash[:error] = "Fatal error."
+      flash[:error] = "Please sign in"
+      redirect_to login_path
     end
   end
 

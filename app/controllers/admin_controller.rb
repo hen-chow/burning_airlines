@@ -1,18 +1,23 @@
 class AdminController < ApplicationController
-  before_action :authenticate_user, only: [:create]
+  before_action :authenticate_user, only: [:create_airplanes, :create_flights]
 
   def index_airplanes
     @airplanes = Airplane.all
   end
 
   def create_airplanes
-    @airplane = Airplane.new(clean_params_airplane)
-    if @airplane.save
-      redirect_to index_airplanes_path
-      flash[:success] = "An airplane is created."
+    if @current_user.admin
+      @airplane = Airplane.new(clean_params_airplane)
+      if @airplane.save
+        redirect_to index_airplanes_path
+        flash[:success] = "An airplane is created."
+      else
+        redirect_to index_airplanes_path
+        flash[:error] = "Fatal error."
+      end
     else
-      redirect_to index_airplanes_path
-      flash[:error] = "Fatal error."
+      flash[:error] = "Access denied"
+      redirect_to root_path
     end
   end
 
