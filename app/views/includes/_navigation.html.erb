@@ -7,9 +7,11 @@
           Welcome back, <%= @current_user.name %>!
         </div>
       <% end %>
-      <% if @current_user.admin %>
-        <%= link_to "Create an airplane", index_airplanes_path, class: "ui item" %>
-        <%= link_to "Create a flight", index_flights_path, class: "ui item" %>
+      <% if @current_user %>
+        <% if @current_user.admin %>
+          <%= link_to "Create an airplane", index_airplanes_path, class: "ui item" %>
+          <%= link_to "Create a flight", index_flights_path, class: "ui item" %>
+        <% end %>
       <% end %>
       <%= link_to "Sign up", new_user_path, class: "ui item" %>
       <%= link_to "Log in", login_path, class: "ui item" %>
