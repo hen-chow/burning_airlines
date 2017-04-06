@@ -30,23 +30,20 @@ App.ReservationView = Backbone.View.extend({
     var seatPlan = $("#seatPlan");
     var table = $("<table>");
 
-    this.createSeatArray(rows, cols);
+    var seatArray = this.createSeatArray(rows, cols); // create empty seatArray
 
-    var res = this.collection.reservations.models.filter(function(reservation){
+    var res = this.collection.reservations.models.filter(function(reservation){ // retrieve reservation information
       return reservation.get("flight_id").toString() === App.id;
     });
 
-    var seat = [];
-
-    _.each(res, function(num) {
-      seat.push("row: " + num.get("row"));
-      seat.push("col: " + num.get("column"));
-
-      return seat;
-
+    _.each(res, function(num){ // update seatArray with reservation info
+      var x = num.get("row")
+      var y = num.get("column")
+      seatArray[x][y] = "booked";
+      return seatArray
     })
 
-    console.log(seat);
+
 
 
     seatPlan.append(table);
