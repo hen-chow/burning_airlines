@@ -10,7 +10,7 @@ App.ReservationView = Backbone.View.extend({
   // },
   render: function () {
     $("#results").html("");
-    App.flightDetail = this.collection.models.filter(function(flight){
+    App.flightDetail = this.collection.flights.models.filter(function(flight){
       return flight.get("id").toString() === App.id
     });
 
@@ -27,6 +27,15 @@ App.ReservationView = Backbone.View.extend({
     var cols = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.column
     var seatPlan = $("#seatPlan");
     var table = $("<table>");
+
+    this.createSeatArray(rows, cols);
+
+    var res = this.collection.reservations.models.filter(function(reservation){
+      return reservation.get("flight_id").toString() === App.id
+    });
+
+    console.log(res);
+
 
     seatPlan.append(table);
     table.append("<caption>" + name + " - " + "rows: " + rows + ", cols: " + cols + "</caption>");
@@ -53,6 +62,9 @@ App.ReservationView = Backbone.View.extend({
       border: "solid 1px black",
       padding: "10px"
     });
+
+    
+
   },
 
   createSeatArray: function(row, column){
