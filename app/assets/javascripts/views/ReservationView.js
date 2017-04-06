@@ -63,8 +63,11 @@ App.ReservationView = Backbone.View.extend({
       padding: "10px"
     });
 
-    
-
+    for (var i = 0; i < res.length; i++) {
+      res_row = res[i].attributes.row
+      res_col = res[i].attributes.column
+      $("tr")[res_row].cells[res_col+1].style.backgroundColor = "orange";
+    };
   },
 
   createSeatArray: function(row, column){
