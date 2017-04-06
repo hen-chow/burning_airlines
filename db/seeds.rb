@@ -11,9 +11,9 @@ puts "Testing that this works!"
 Airplane.destroy_all
 User.destroy_all
 
-airplane_1 = Airplane.create(name: "747", row: 30, column: 7)
-airplane_2 = Airplane.create(name: "757", row: 20, column: 5)
-airplane_3 = Airplane.create(name: "A380", row: 70, column: 7)
+airplane_1 = Airplane.create(name: "747", row: 9, column: 30)
+airplane_2 = Airplane.create(name: "757", row: 6, column: 20)
+airplane_3 = Airplane.create(name: "A380", row: 9, column: 40)
 
 admin = User.create(name: "admin", email: "admin@admin.com", password: "password", admin: true)
 
