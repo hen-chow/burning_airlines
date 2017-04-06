@@ -16,8 +16,6 @@ App.ReservationView = Backbone.View.extend({
       return flight.get("id").toString() === App.id
     });
 
-    // console.log(App.flightDetail);
-
     var template = _.template($("#reservationsTemplate").html());
     // this.$el
     this.$el.html(template({results: App.flightDetail}));
@@ -30,20 +28,18 @@ App.ReservationView = Backbone.View.extend({
     var seatPlan = $("#seatPlan");
     var table = $("<table>");
 
-    var seatArray = this.createSeatArray(rows, cols); // create empty seatArray
+    // var seatArray = this.createSeatArray(rows, cols); // create empty seatArray
 
     var res = this.collection.reservations.models.filter(function(reservation){ // retrieve reservation information
       return reservation.get("flight_id").toString() === App.id;
     });
 
-    _.each(res, function(num){ // update seatArray with reservation info
-      var x = num.get("row")
-      var y = num.get("column")
-      seatArray[x][y] = "booked";
-      return seatArray
-    })
-
-
+    // _.each(res, function(num){ // update seatArray with reservation info
+    //   var x = num.get("row")
+    //   var y = num.get("column")
+    //   seatArray[x][y] = "booked";
+    //   return seatArray
+    // })
 
 
     seatPlan.append(table);
@@ -87,15 +83,16 @@ App.ReservationView = Backbone.View.extend({
     return seatArray
   },
 
-  createReservation: function(user, x, y){ //update seatArray with this function, create reservation in backend
+  createReservation: function(e){ //update seatArray with this function, create reservation in backend
     var flight_id = App.id;
+    var column = $(e.currentTarget).index();
+    var row = $(e.currentTarget).parent().index();
 
-    var reservation = new App.Reservation({ user_id: user_id, flight_id: flight_id })
-    reservation.save();
-    // this.collection.create({ user_id: user_id, flight_id: flight_id });
+    var new_reservation = new App.Reservation ({flight_id: flight_id, row: row, column: column })
+    new_reservation.save();
 
-    var seats = this.seatArray;
-    seats[x][y] = user; // updating the seatArray
-    return seats;
+    // var seats = this.seatArray;
+    // seats[x][y] = user; // updating the seatArray
+    // return seats;
   }
 });
