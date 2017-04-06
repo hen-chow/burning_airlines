@@ -6,7 +6,8 @@ class ReservationsController < ApplicationController
 
   def create
     if @current_user
-      @reservation = Reservation.new(clean_params)
+      user_id = @current_user.id
+      @reservation = Reservation.new(flight_id: params[:flight_id], row: params[:row], column: params[:column], user_id: user_id)
       if @reservation.save
         render json: @reservation
       else
@@ -21,7 +22,7 @@ class ReservationsController < ApplicationController
   private
 
   def clean_params
-    params.require(:reservation).permit(:user_id, :flight_id)
+    params.require(:reservation).permit(:user_id, :flight_id, :row, :column)
   end
 
 
