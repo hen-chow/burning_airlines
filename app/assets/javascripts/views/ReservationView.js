@@ -4,18 +4,17 @@ App.ReservationView = Backbone.View.extend({
   el: "#main",
 
   events: {
-    "click td": "createReservation"
+    "click td": "createReservation" //"createConfirmation"
   },
 
   render: function () {
-
+    $("#main").html("");
     $("#results").html("");
-    App.flightDetail = this.collection.flights.models.filter(function(flight){
+      App.flightDetail = this.collection.flights.models.filter(function(flight){
       return flight.get("id").toString() === App.id
     });
 
     var template = _.template($("#reservationsTemplate").html());
-    // this.$el
     this.$el.html(template({results: App.flightDetail}));
 
     var view = new App.ReservationsListView({collection: this.collection});
@@ -23,18 +22,12 @@ App.ReservationView = Backbone.View.extend({
 
   },
 
-  createSeatArray: function(row, column){
-    var rowArray = Array(row).fill("");
-    var seatArray = _.map(rowArray, function(num){
-      return num = Array(column).fill("")
-    });
-    return seatArray
-  },
-
-  createReservation: function(e){ //update seatArray with this function, create reservation in backend
+  createReservation: function(e){ // create confirmation window
     var flight_id = App.id;
     var column = $(e.currentTarget).index() - 1;
-    var row = $(e.currentTarget).parent().index();
+    var row = $(e.currentTarget).parent().index(); //String.fromCharCode(65 + ())
+
+    // App.router.navigate("confirmation/" + column + "/" + row + "/", {trigger: true});
 
     // var new_reservation = new App.Reservation ({flight_id: flight_id, row: row, column: column })
     // new_reservation.save();
@@ -43,10 +36,10 @@ App.ReservationView = Backbone.View.extend({
 
     // App.Reservations.add( r );
 
-
     // this.render();
     // var seats = this.seatArray;
     // seats[x][y] = user; // updating the seatArray
     // return seats;
   }
+
 });

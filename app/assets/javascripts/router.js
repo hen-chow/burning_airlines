@@ -5,13 +5,10 @@ App.Router = Backbone.Router.extend({
     "": "index",
     "search/:departure/:arrival/": "searchResults",
     "flight/:id/": "reservation"
-    // "flights": "newFlight"
-    // "/admin/airplanes": "createAirplanes"
+    // "confirmation/:column/:row/": "confirmation"
+
   },
-  // createAirplanes: function(){
-  //   var view = new App.AirplaneView({collection: App.airplanes});
-  //   view.render();
-  // },
+
   index: function(){
     var view = new App.SearchView({collection: App.flights});
     view.render();
@@ -21,12 +18,12 @@ App.Router = Backbone.Router.extend({
     //   view.render();
   },
 
-  searchResults: function () {
+  searchResults: function (departure, arrival) {
     var view = new App.SearchResultsView({departure: departure, arrival: arrival, collection: App.flights});
     view.render();
   },
 
-  reservation: function(){
+  reservation: function(id){
     var view = new App.ReservationView({
       collection: {
         flights: App.flights,
@@ -35,5 +32,11 @@ App.Router = Backbone.Router.extend({
       id: App.id
     });
     view.render();
+  // },
+  // 
+  // confirmation: function(column, row){
+  //   var view = new App.ConfirmationView({results: App.flightDetail, column: column, row: row});
+  //   view.render();
   }
+
 })

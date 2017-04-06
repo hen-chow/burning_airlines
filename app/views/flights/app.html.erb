@@ -1,5 +1,7 @@
 <div id="main"></div>
 <div id="results"></div>
+<div id="confirmation_container"></div>
+
 
 <!-- main template for backbone to receive inputs for search flight-->
 <script id="searchFlightTemplate" type="text/template">
@@ -16,7 +18,7 @@
         <button id="save_search" class="ui large button">Search</button>
       </div>
     </p>
-    <div id="search_results"></div>
+    <!-- <div id="search_results"></div> -->
   </div>
 </script>
 
@@ -27,8 +29,8 @@
     {{ _.each(results, function(flight){ }}
     <ul>
       <li>{{= flight.get("date") }}</li>
-      <li><a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a></li>
-      <li>{{= flight.get("departure") }} > {{= flight.get("arrival") }}</li>
+      <li>VA {{= flight.get("number") }}</li>
+      <li>{{= flight.get("departure") }} >> {{= flight.get("arrival") }}</li>
     </ul>
     <p>
       <button id="{{= flight.get("id")}}" class="ui large button">Select</button>
@@ -45,5 +47,19 @@
     <h4>{{= flight.get("date") }} {{= flight.get("number") }} {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
     {{ }); }}
     <div id="seatPlan"></div>
+  </div>
+</script>
+
+<!-- main template for backbone to print out confirmation -->
+<script id="confirmationTemplate" type="text/template">
+  <div>
+    {{ _.each(results, function(flight){ }}
+    <p>{{= flight.get("date") }}</p>
+    <p>VA {{= flight.get("number") }}</p>
+    <p>{{= flight.get("departure") }} >> {{= flight.get("arrival") }}</p>
+    {{ }); }}
+    <p>
+      <button class="ui large button" id="confirmation">Confirm</button>
+    </p>
   </div>
 </script>
