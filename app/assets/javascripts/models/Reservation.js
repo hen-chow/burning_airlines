@@ -1,5 +1,5 @@
 var App = App || {}
 
 App.Reservation = Backbone.Model.extend({
-  url: "/flight"
+  url: "/reservations"
 });
