@@ -47,13 +47,7 @@ App.ReservationsListView = Backbone.View.extend({
       $("<th>" + chr + "</th>").appendTo(tr);
       for (var c = 0; c < cols; c++) {
         $("<td>" + parseInt(c + 1) + "</td>").appendTo(tr);
-        // if (c % 3 == 0) {
-        //   $("tr").css({
-        //     marginTop: "20px"
-        //   });
-        // }
       }
-      // $("<th>" + (c+1) + "</th>").appendTo(table);
       tr.appendTo(table);
     }
 
@@ -63,6 +57,14 @@ App.ReservationsListView = Backbone.View.extend({
       border: "solid 1px black",
       padding: "10px"
     });
+
+    // for (var rr = 0; rr < rows; rr++) {
+    //   if (rr % 2 == 0) {
+    //     for (var cc = 0; cc < cols; cc++) {
+    //       $("tr")[rr].cells[cc].style.marginTop = "20px";
+    //     }
+    //   }
+    // }
 
     for (var i = 0; i < res.length; i++) {
       res_row = res[i].attributes.row
