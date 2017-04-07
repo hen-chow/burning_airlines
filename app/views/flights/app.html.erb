@@ -10,7 +10,7 @@
 
     <button id="search_flight" class="ui large button">Search Flights</button>
     <p>
-      <div id="search_form" style="display: none" class="ui large form">
+      <div id="search_form"  class="ui large form">
         <input id="departure" type="text" placeholder="from" value="Sydney" />
         <input id="arrival" type="text" placeholder="to" value="Melbourne"/>
 
@@ -29,7 +29,7 @@
     {{ _.each(results, function(flight){ }}
     <ul>
       <li>{{= flight.get("date") }}</li>
-      <li>VA {{= flight.get("number") }}</li>
+      <li><a href="#/flight/{{= flight.get("id") }}/">VA{{= flight.get("number") }}</a></li>
       <li>{{= flight.get("departure") }} >> {{= flight.get("arrival") }}</li>
     </ul>
     <p>
@@ -58,8 +58,10 @@
     <p>VA {{= flight.get("number") }}</p>
     <p>{{= flight.get("departure") }} >> {{= flight.get("arrival") }}</p>
     {{ }); }}
+    <p>Seat {{= row}}{{= column}}</p>
     <p>
-      <button class="ui large button" id="confirmation">Confirm</button>
+      <button class="ui large button" id="confirmation_button" row="{{=row}}" col="{{= column}}">Confirm</button>
     </p>
+
   </div>
 </script>

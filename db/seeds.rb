@@ -25,8 +25,8 @@ flight_1 = Flight.create(number: 123, date: "05/04/2017", arrival: "Melbourne", 
 flight_2 = Flight.create(number: 234, date: "05/04/2017", arrival: "Brisbane", departure: "Hobart", airplane_id: airplane_1.id)
 flight_3 = Flight.create(number: 222, date: "06/04/2017", arrival: "Sydney", departure: "Adelaide", airplane_id: airplane_2.id)
 flight_4 = Flight.create(number: 100, date: "07/04/2017", arrival: "Perth", departure: "Adelaide", airplane_id: airplane_2.id)
-flight_5 = Flight.create(number: 333, date: "07/04/2017", arrival: "Darwin", departure: "Brisbane", airplane_id: airplane_3.id)
-flight_6 = Flight.create(number: 309, date: "27/04/2017", arrival: "New York", departure: "Sydney", airplane_id: airplane_3.id)
+flight_5 = Flight.create(number: 333, date: "07/04/2017", arrival: "Melbourne", departure: "Sydney", airplane_id: airplane_3.id)
+flight_6 = Flight.create(number: 309, date: "27/04/2017", arrival: "Melbourne", departure: "Sydney", airplane_id: airplane_3.id)
 
 reservation_1 = Reservation.create(user_id: admin.id, flight_id: flight_1.id, column: 0, row: 0)
 reservation_2 = Reservation.create(user_id: admin.id, flight_id: flight_2.id, column: 2, row: 3)

@@ -4,21 +4,19 @@ App.ConfirmationView = Backbone.View.extend({
   el: "#confirmation",
 
   events: {
-    "click #confirmation": "createReservation"
+    "click #confirmation_button": "createReservation"
   },
 
-  render: function () {
-
+  render: function (options) {
     // $("#seatPlan").html("");
     var template = _.template($("#confirmationTemplate").html());
-    debugger
-    this.$el.html(template({results: App.flightDetail, column: column, row: row}));
+    this.$el.html(template({model: options.flightDetail, column: options.column, row: options.row}));
   },
 
   createReservation: function(e){ // create reservation in backend
-    var flight_id = App.id;
-    var column = $("#confirmation").attr("col");
-    var row = $("#confirmation").attr("row")
+    var flight_id = this.id;
+    var column = $("#confirmation_button").attr("col");
+    var row = $("#confirmation_button").attr("row");
 
     // var new_reservation = new App.Reservation ({flight_id: flight_id, row: row, column: column })
     // new_reservation.save();
