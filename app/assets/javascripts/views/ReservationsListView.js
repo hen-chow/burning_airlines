@@ -17,6 +17,8 @@ App.ReservationsListView = Backbone.View.extend({
   //   this.$el.html(template({results: App.flightDetail}));
 
   render: function (options) {
+    
+    $("#results").html("");
 
     var airplaneID = App.flightDetail[0].attributes.airplane_id
     var name = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.name
