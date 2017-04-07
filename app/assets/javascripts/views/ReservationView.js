@@ -11,21 +11,21 @@ App.ReservationView = Backbone.View.extend({
 
     $("#main").html("");
     $("#results").html("");
-      var flightDetail = this.collection.flights.models.filter(function(flight){
+      App.flightDetail = this.collection.flights.models.filter(function(flight){
       return flight.get("id").toString() === options.flight_id
     });
     var template = _.template($("#reservationsTemplate").html());
-    this.$el.html(template({results: flightDetail}));
+    this.$el.html(template({results: App.flightDetail}));
 
     var view = new App.ReservationsListView({collection: this.collection});
-    view.render({flightDetail: flightDetail, flight_id: options.flight_id});
+    view.render({flight_id: options.flight_id});
 
   },
 
   createConfirmation: function(e){ // create confirmation window
     console.log( this.id);
     var flight_id = this.id;
-    var flightDetail = this.collection.flights.models.filter(function(flight){
+    App.flightDetail = this.collection.flights.models.filter(function(flight){
     return flight.get("id").toString() === flight_id
   });
     var column = $(e.currentTarget).index();
@@ -33,7 +33,7 @@ App.ReservationView = Backbone.View.extend({
     var row = String.fromCharCode(65 + r);
 
     var view = new App.ConfirmationView({collection: this.collection, id: this.id});
-    view.render({column: column, row: row, flightDetail: flightDetail});
+    view.render({column: column, row: row});
     // var template = _.template($("#confirmationTemplate").html());
     // this.$el.html(template({model: flightDetail, column: column, row: row}));
 

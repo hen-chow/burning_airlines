@@ -10,7 +10,7 @@ App.ConfirmationView = Backbone.View.extend({
   render: function (options) {
     // $("#seatPlan").html("");
     var template = _.template($("#confirmationTemplate").html());
-    this.$el.html(template({model: options.flightDetail, column: options.column, row: options.row}));
+    this.$el.html(template({model: App.flightDetail, column: options.column, row: options.row}));
   },
 
   createReservation: function(e){ // create reservation in backend

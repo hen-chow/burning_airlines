@@ -40,7 +40,7 @@
     {{ _.each(results, function(flight){ }}
       <tr>
         <td>{{= flight.get("date") }}</td>
-        <td><a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a></td>
+        <td><a class="flightID" href="#/flight/{{= flight.get("id")}}/">{{= flight.get("number") }}</a></td>
         <td>{{= flight.get("departure") }} > {{= flight.get("arrival") }}</td>
 
         {{ var airplaneRow = _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.row }}
