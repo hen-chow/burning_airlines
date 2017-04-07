@@ -3,10 +3,10 @@ _.templateSettings = {
     evaluate : /\{\{(.+?)\}\}/g
   };
 
-App.router = new App.Router();
 App.airplanes = new App.Airplanes();
 App.flights = new App.Flights();
 App.reservations = new App.Reservations();
+App.router = new App.Router();
 
 $(document).ready(function(){
 

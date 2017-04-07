@@ -1,5 +1,7 @@
 <div id="main"></div>
 <div id="results"></div>
+<div id="confirmation"></div>
+
 
 <!-- main template for backbone to receive inputs for search flight-->
 <script id="searchFlightTemplate" type="text/template">
@@ -8,7 +10,7 @@
 
     <button id="search_flight" class="ui large button">Search Flights</button>
     <p>
-      <div id="search_form" style="display: none" class="ui large form">
+      <div id="search_form"  class="ui large form">
         <input id="departure" type="text" placeholder="from" value="Sydney" />
         <input id="arrival" type="text" placeholder="to" value="Melbourne"/>
 
@@ -16,7 +18,7 @@
         <button id="save_search" class="ui large button">Search</button>
       </div>
     </p>
-    <div id="search_results"></div>
+    <!-- <div id="search_results"></div> -->
   </div>
 </script>
 
@@ -32,7 +34,7 @@
           <th>From and To</th>
           <th>Available Seats</th>
           <th>Total No. of Seats</th>
-          <th>Action</th>
+          <!-- <th>Action</th> -->
         </tr>
       </thead>
     {{ _.each(results, function(flight){ }}
@@ -47,10 +49,11 @@
 
         <td>{{= airplaneRow * airplaneColumn - seatsTaken }}</td>
         <td>{{= airplaneRow * airplaneColumn }}</td>
-        <td>
+        <!-- <td>
           <button id="{{= flight.get("id")}}" class="ui large button">Select</button>
-        </td>
+        </td> -->
       </tr>
+
     {{ }); }}
     </table>
   </div>
@@ -64,5 +67,21 @@
     <h4>{{= flight.get("date") }} {{= flight.get("number") }} {{= flight.get("departure") }} > {{= flight.get("arrival") }}</h4>
     {{ }); }}
     <div id="seatPlan"></div>
+  </div>
+</script>
+
+<!-- main template for backbone to print out confirmation -->
+<script id="confirmationTemplate" type="text/template">
+  <div>
+    {{ _.each(model, function(flight){ }}
+    <p>{{= flight.get("date") }}</p>
+    <p>VA {{= flight.get("number") }}</p>
+    <p>{{= flight.get("departure") }} >> {{= flight.get("arrival") }}</p>
+    {{ }); }}
+    <p>Seat {{= row}}{{= column}}</p>
+    <p>
+      <button class="ui large button" id="confirmation_button" row="{{=row}}" col="{{= column}}">Confirm</button>
+    </p>
+
   </div>
 </script>

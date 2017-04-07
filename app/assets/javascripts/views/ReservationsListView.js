@@ -6,28 +6,30 @@ App.ReservationsListView = Backbone.View.extend({
     this.listenTo(options.collection.reservations, "change sync", this.render);
   },
 
-  render: function () {
-    $("#results").html("");
-    App.flightDetail = this.collection.flights.models.filter(function(flight){
-      return flight.get("id").toString() === App.id
-    });
+  // render: function () {
+  //   $("#results").html("");
+  //   App.flightDetail = this.collection.flights.models.filter(function(flight){
+  //     return flight.get("id").toString() === App.id
+  //   });
+  //
+  //   var template = _.template($("#reservationsTemplate").html());
+  //   // this.$el
+  //   this.$el.html(template({results: App.flightDetail}));
 
-    var template = _.template($("#reservationsTemplate").html());
-    // this.$el
-    this.$el.html(template({results: App.flightDetail}));
+  render: function (options) {
 
-
-    var airplaneID = App.flightDetail[0].attributes.airplane_id
+    var airplaneID = options.flightDetail[0].attributes.airplane_id
     var name = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.name
     var rows = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.row
     var cols = _.findWhere(App.airplanes.models, {id: airplaneID}).attributes.column
     var seatPlan = $("#seatPlan");
     var table = $("<table>");
 
-    // var seatArray = this.createSeatArray(rows, cols); // create empty seatArray
+    console.log(options.flight_id);
 
+    // var seatArray = this.createSeatArray(rows, cols); // create empty seatArray
     var res = this.collection.reservations.models.filter(function(reservation){ // retrieve reservation information
-      return reservation.get("flight_id").toString() === App.id;
+      return reservation.get("flight_id").toString() === options.flight_id;
     });
 
     // _.each(res, function(num){ // update seatArray with reservation info
@@ -36,7 +38,6 @@ App.ReservationsListView = Backbone.View.extend({
     //   seatArray[x][y] = "booked";
     //   return seatArray
     // })
-
 
     seatPlan.append(table);
     table.append("<caption>" + name + " - " + "rows: " + rows + ", cols: " + cols + "</caption>");
@@ -71,14 +72,14 @@ App.ReservationsListView = Backbone.View.extend({
       res_col = res[i].attributes.column
       $("tr")[res_row].cells[res_col+1].style.backgroundColor = "orange";
     };
-  },
-
-  createSeatArray: function(row, column){
-    var rowArray = Array(row).fill("");
-    var seatArray = _.map(rowArray, function(num){
-      return num = Array(column).fill("")
-    });
-    return seatArray
+  // },
+  //
+  // createSeatArray: function(row, column){
+  //   var rowArray = Array(row).fill("");
+  //   var seatArray = _.map(rowArray, function(num){
+  //     return num = Array(column).fill("")
+  //   });
+  //   return seatArray
   }
 
 });

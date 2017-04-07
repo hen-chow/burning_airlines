@@ -26,6 +26,7 @@
 
  #results {
    margin: 30px;
+   height: auto;
  }
 
 .ui.button {
@@ -34,6 +35,12 @@
 
 #main {
   margin-top: 30px;
+  height: auto;
+}
+
+#confirmation_container {
+  margin: 30px;
+  height: auto;
 }
 
 .pushable {
