@@ -24,16 +24,30 @@
 <!-- main template for backbone to print out search results -->
 <script id="searchResultsTemplate" type="text/template">
   <div class="ui container">
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Flight#</th>
+          <th>From and To</th>
+          <th>Available Seats</th>
+          <th>Total No. of Seats</th>
+          <th>Action</th>
+        </tr>
+      </thead>
     {{ _.each(results, function(flight){ }}
-    <ul>
-      <li>{{= flight.get("date") }}</li>
-      <li><a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a></li>
-      <li>{{= flight.get("departure") }} > {{= flight.get("arrival") }}</li>
-    </ul>
-    <p>
-      <button id="{{= flight.get("id")}}" class="ui large button">Select</button>
-    </p>
+      <tr>
+        <td>{{= flight.get("date") }}</td>
+        <td><a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a></td>
+        <td>{{= flight.get("departure") }} > {{= flight.get("arrival") }}</td>
+        <td>{{= _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.row * _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.column - _.where(_.pluck(App.reservations.models, 'attributes'), {flight_id: flight.get("id")}).length }}</td>
+        <td>{{= _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.row * _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.column }}</td>
+        <td>
+          <button id="{{= flight.get("id")}}" class="ui large button">Select</button>
+        </td>
+      </tr>
     {{ }); }}
+    </table>
   </div>
 </script>
 

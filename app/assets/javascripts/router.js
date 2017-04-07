@@ -22,7 +22,15 @@ App.Router = Backbone.Router.extend({
   },
 
   searchResults: function () {
-    var view = new App.SearchResultsView({departure: departure, arrival: arrival, collection: App.flights});
+    var view = new App.SearchResultsView({
+      departure: departure,
+      arrival: arrival,
+      collection: {
+        flights: App.flights,
+        airplanes: App.airplanes,
+        reservations: App.reservations
+      }
+    });
     view.render();
   },
 
