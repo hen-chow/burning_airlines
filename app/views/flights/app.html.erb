@@ -40,8 +40,13 @@
         <td>{{= flight.get("date") }}</td>
         <td><a class="flightID" href="#/flight/{{= flight.get("id")}}">{{= flight.get("number") }}</a></td>
         <td>{{= flight.get("departure") }} > {{= flight.get("arrival") }}</td>
-        <td>{{= _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.row * _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.column - _.where(_.pluck(App.reservations.models, 'attributes'), {flight_id: flight.get("id")}).length }}</td>
-        <td>{{= _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.row * _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.column }}</td>
+
+        {{ var airplaneRow = _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.row }}
+        {{ var airplaneColumn = _.findWhere(App.airplanes.models, {id: flight.get("airplane_id")}).attributes.column }}
+        {{ var seatsTaken = _.where(_.pluck(App.reservations.models, 'attributes'), {flight_id: flight.get("id")}).length }}
+
+        <td>{{= airplaneRow * airplaneColumn - seatsTaken }}</td>
+        <td>{{= airplaneRow * airplaneColumn }}</td>
         <td>
           <button id="{{= flight.get("id")}}" class="ui large button">Select</button>
         </td>
